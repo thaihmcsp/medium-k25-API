@@ -53,7 +53,7 @@ module.exports.getAllCategory = async (req, res) => {
   }
 };
 
-//find one
+//update one
 module.exports.updateCategory = async (req, res) => {
   try {
     const category = await Category.findOne({ _id: req.params.id });
