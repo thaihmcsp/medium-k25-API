@@ -13,4 +13,16 @@ router.use('/category', categoryRoute);
 router.use('/follow', followRoute);
 router.use('/post', postRoute);
 
+//category - controler
+router.use("/category", categoryRoute);
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
