@@ -35,7 +35,8 @@ exports.login = async (req, res) => {
 
 exports.getLogInUser = async (req, res) => {
     try {
-        res.json({user: req.user})
+        const user = await User.findOne({_id: req.user._id});
+        res.json({user})
     } catch (error) {
         res.status(500).json({message: 'server error', error});
     }

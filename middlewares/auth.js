@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { use } = require('../routes');
 
 exports.checkLogin = (req, res, next) => {
     try {
