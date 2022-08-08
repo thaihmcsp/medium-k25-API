@@ -40,3 +40,12 @@ exports.changePassword = async (req, res) => {
         res.status(500).json({message: 'server error', error})
     }
 }
+
+exports.getAllUser = async (req, res) => {
+    try {
+        const listUser = await User.find();
+        res.status(200).json({listUser});
+    } catch (error) {
+        res.status(500).json({message: 'server error', error})
+    }
+}

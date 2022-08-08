@@ -3,8 +3,8 @@ const { Follow } = require("../models/Folow");
 exports.addFollow = async (req, res) => {
   try {
     const addFollow = await Follow.create({
-      userID: req.body.userID,
-      authorID: req.body.authorID,
+      userId: req.body.userId,
+      authorId: req.body.authorId,
     });
 
     res.status(200).json({ message: "create success", data: addFollow });
@@ -15,10 +15,7 @@ exports.addFollow = async (req, res) => {
 
 exports.deleteFollow = async (req, res) => {
   try {
-    const deleteFollow = await Follow.deleteOne({
-      userID: req.params.userID,
-      authorID: req.params.authorID,
-    });
+    const deleteFollow = await Follow.deleteOne({_id: req.params.followId});
 
     res.status(200).json({ message: "create success", data: deleteFollow });
   } catch (error) {

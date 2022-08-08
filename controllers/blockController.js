@@ -3,8 +3,8 @@ const { Block } = require("../models/Block");
 exports.createBlock = async (req, res) => {
   try {
     const block = await Block.create({
-      userID: req.body.userID,
-      authorID: req.body.authorID,
+      userId: req.body.userId,
+      authorId: req.body.authorId,
     });
 
     res.status(200).json({ message: "create success", data: block });
@@ -15,10 +15,7 @@ exports.createBlock = async (req, res) => {
 
 exports.deleteBlock = async (req, res) => {
   try {
-    const deleteBlock = await Block.deleteOne({
-      userID: req.params.userID,
-      authorID: req.params.authorID,
-    });
+    const deleteBlock = await Block.deleteOne({_id: req.params.blockId});
 
     res.status(200).json({ message: "create success", data: deleteBlock });
   } catch (error) {
