@@ -25,12 +25,9 @@ exports.handlePostImageUpload = (files, body) => {
         return value.split('"')[0]
     });
 
-    console.log(27, listImgArrInUse);
-
     let listAllImage = body.base64;
     for(let i = 0; i < listAllImage.length; i++){
         if(!listImgArrInUse.includes(listAllImage[i])) {
-            console.log(30, listAllImage[i]);
             fs.unlink(files[i].path, (err) => {return});
         }else{
             body.post = body.post.replace(listAllImage[i], DOMAIN+files[i].path);
