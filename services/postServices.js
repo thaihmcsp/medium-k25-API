@@ -1,8 +1,8 @@
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-// const DOMAIN = process.env.DOMAIN;
-const DOMAIN = process.env.LOCAL;
+const DOMAIN = 'https://medium-k25-api.thaihm.site/';
+// const DOMAIN = process.env.LOCAL;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
