@@ -1,7 +1,8 @@
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const DOMAIN = process.env.DOMAIN;
+// const DOMAIN = process.env.DOMAIN;
+const DOMAIN = process.env.LOCAL;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -21,11 +22,15 @@ exports.upload = multer({ storage: storage }, {
 })
 
 exports.handlePostImageUpload = (files, body) => {
+    console.log(24, files);
+    console.log(25, body);
     let listImgArrInUse = body.post.split('src="').slice(1).map((value) => {
         return value.split('"')[0]
     });
+    console.log(29, listImgArrInUse);
+    let listAllImage = typeof body.base64 === 'string' ? [body.base64] : body.base64;
 
-    let listAllImage = body.base64;
+    console.log(35, listAllImage);
     for(let i = 0; i < listAllImage.length; i++){
         if(!listImgArrInUse.includes(listAllImage[i])) {
             fs.unlink(files[i].path, (err) => {return});
